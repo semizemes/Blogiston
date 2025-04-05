@@ -1,0 +1,243 @@
+html {
+    font-family: 'Source Sans 3', sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+    
+}
+
+
+
+
+body {
+    /* background-color: aqua; */
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+#ultimate{
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    overflow: auto;
+}
+
+main {
+    position: fixed;
+    top: 0;
+    width: 80%;
+    z-index: 2;
+    background-color: white; 
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+
+h1 a[href="#"] {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+#links {
+    display: flex;
+    gap: 25px;
+}
+
+
+footer {
+    color: grey;
+    text-align: center;
+
+}
+
+#footerPart {
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    background-color: white;
+}
+
+#main-header,
+#main-text {
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main {
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#routes {
+    display: flex;
+    justify-content: center;
+    column-gap: 60px;
+}
+
+#routes .create-btn h2 {
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0;
+    padding: 0.7rem 2rem;
+}
+
+#routes .read-btn h2 {
+    background-color: white;
+    color: #1e90ff;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0;
+    padding: 0.7rem 2.5rem;
+    /* border-color: black; */
+    border: 2px solid #1e90ff;
+}
+
+
+form {
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 70%;
+    margin: 4rem  auto;
+    padding: 5%;
+}
+
+form button {
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0.7rem 0.5rem;
+    width: 70px;
+    border: none;
+    cursor: pointer;
+}
+
+textarea {
+    height: 90px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+input[id="created-time"] {
+    border: none;
+}
+
+#created-time:focus {
+    cursor: default;
+    border: none;
+    outline: none;
+}
+
+.writtenPost {
+    margin-top: 1%;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 100%;
+    max-width: 70%;
+    margin: 1% auto;
+    padding: 5%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.writtenPost #written-text{
+    white-space: normal; 
+    word-break: break-word;
+}
+
+a[id="read-other"]{
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+    width: 130px;
+    border: none;
+}
+
+#created-post-shown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem  auto;
+
+}
+
+#other-part svg{
+    width: 40px;
+    height: 40px;
+}
+
+#my-img{
+    height: 200px;
+    width: 200px;
+}
+
+#about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 90px;
+    margin-top: 50px;
+}
+
+#second-part h2{
+    font-size: 2rem;
+}
+
+.edit-btn{
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0.7rem 0.5rem;
+    width: 70px;
+    border: none;
+    cursor: pointer !important;
+}
+
+.delete-btn{
+    background-color: rgb(229, 51, 51);
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0.7rem 0.5rem;
+    width: 70px;
+    border: none;
+    cursor: pointer !important;
+}
+
+.modify-btns{
+    margin-top: 40px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.modify-btns button:hover{
+    cursor: pointer;
+}
+
+.not-seen{
+    display: none;
+}

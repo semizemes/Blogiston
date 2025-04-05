@@ -1,0 +1,137 @@
+<%- include("header.ejs") %>
+
+<div id="main-page">
+  <div id="main">
+    <h1 id="main-header">Welcome to Blogiston!</h1>
+
+    <p id="main-text">
+      You can create, read <i><b>posts</b></i> in here
+    </p>
+  </div>
+
+  <div id="routes">
+    <a id="create-btn" class="create-btn" href="#create"><h2>Create</h2></a>
+    <a class="read-btn" href="#creted-post-shown"><h2>Read</h2></a>
+  </div>
+</div>
+
+<form id="form-div" method="dialog">
+  <div>
+    <label for="authorName">Name: </label>
+    <input
+      id="name-input"
+      name="authorName"
+      placeholder="Input your name"
+      type="text"
+      required
+    />
+  </div>
+  <textarea id="textarea" placeholder="Write what you want:"></textarea>
+  <p>
+    Time you are writing:
+    <input type="text" id="created-time" readonly />
+  </p>
+
+  <button id="post-btn" type="submit">Post</button>
+</form>
+
+<div id="creted-post-shown"></div>
+<%- include("about.ejs") %>
+
+<!-- ============================ JS part ========================== -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let options = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+    };
+    let iFromTime = new Date().getTime();
+    let formattedTime = new Date().toLocaleString("en-US", options);
+    document.getElementById("created-time").value = formattedTime;
+  });
+
+  const postBtn = document.getElementById("post-btn");
+  const form = document.getElementById("form-div");
+  const nameInput = document.getElementById("name-input");
+  const createBtn = document.getElementById("create-btn");
+  const index = document.getElementById("index");
+  const postText = document.getElementById("textarea");
+  const createdTime = document.getElementById("created-time");
+  const postDiv = document.getElementById("creted-post-shown");
+  const editBtn = document.getElementById("edit-btn");
+  const deleteBtn = document.getElementById("delete-btn");
+
+  const posts = [];
+  let indexPost = 0;
+  postBtn.addEventListener("click", () => {
+    if (nameInput.value) {
+      form.style.display = "none";
+      posts.push({
+        id: indexPost,
+        author: nameInput.value,
+        text: postText.value,
+        time: createdTime.value,
+      });
+
+      const newPost = posts[posts.length - 1];
+
+      const post = document.createElement("div");
+      post.setAttribute("class", "writtenPost");
+      post.setAttribute("id", `id${indexPost}`);
+
+      post.innerHTML = `<div class="not-seen">${indexPost}</div>
+        <p><b>${newPost.author}</b> · ${newPost.time}</p>
+          <p class="written-text">${newPost.text}</p>
+          <div class="modify-btns">
+            <a href="#form-div"><button id="edit-btn" class="edit-btn">Edit</button></a>
+            <button id="delete-btn" class="delete-btn">Delete</button>
+          </div>`;
+
+      indexPost++;
+      postDiv.prepend(post);
+    }
+    
+    nameInput.value = "";
+    postText.value = "";
+  });
+  createBtn.addEventListener("click", () => {
+    form.style.display = "flex";
+  });
+
+  postDiv.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete-btn")) {
+      const postElement = e.target.closest("div[class='writtenPost']");
+      if (postElement) {
+        postElement.remove();
+      }
+    }
+  });
+
+  postDiv.addEventListener("click", (e) => {
+    if (e.target.classList.contains("edit-btn")) {
+      const postElement = e.target.closest("div[class='writtenPost']");
+
+      if (postElement) {
+        postElement.remove();
+
+        console.log(postElement);
+
+        let notSeenElement = postElement.querySelector(".not-seen");
+        let idArr = parseInt(notSeenElement.innerText);
+        console.log(idArr); //bu array index topilgan joy
+
+        form.style.display = "flex";
+        nameInput.value = posts[idArr].author;
+        postText.value = posts[idArr].text;
+        createdTime.value = posts[idArr].time;
+      }
+    }
+  });
+</script>
+
+<%- include("footer.ejs") %>
